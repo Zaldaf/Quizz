@@ -1,0 +1,16 @@
+@startuml
+
+class Theme {
+
+  - nom : String
+}
+class Question {
+  - texte : String
+}
+class Reponse {
+  - texte : String
+  - correcte : boolean
+}
+Question  "1..*" -- "1..1" Theme
+Question "1..1" -- "1..*" Reponse
+@enduml
