@@ -5,12 +5,12 @@ class Theme {
   - nom : String
 }
 class Question {
-  - texte : String
+  - intituler : String
 }
 class Reponse {
-  - texte : String
-  - correcte : boolean
+  - intituler : String
+  - isCorrect : bool
 }
 Question  "1..*" -- "1..1" Theme
-Question "1..1" -- "1..*" Reponse
+Question "1..*" -- "4" Reponse
 @enduml
