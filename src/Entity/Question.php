@@ -6,6 +6,7 @@ use App\Repository\QuestionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: QuestionRepository::class)]
 class Question
@@ -16,12 +17,14 @@ class Question
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['getQuestion'])]
     private ?string $intituler = null;
 
     #[ORM\ManyToOne(inversedBy: 'questions')]
     private ?Theme $Theme = null;
 
     #[ORM\ManyToMany(targetEntity: Reponse::class, mappedBy: 'Question')]
+    #[Groups(['getQuestion'])]
     private Collection $reponses;
 
     public function __construct()

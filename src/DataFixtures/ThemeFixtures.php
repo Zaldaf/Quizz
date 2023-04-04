@@ -15,6 +15,7 @@ class ThemeFixtures extends Fixture
         for ($i = 0; $i <= 6; $i++) {
             $theme = new Theme();
             $theme->setLibel($faker->realTextBetween("6","15"));
+            $this->addReference("theme".$i,$theme);
             $manager->persist($theme);
         }
 
