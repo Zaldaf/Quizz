@@ -34,7 +34,7 @@ class ThemeController extends AbstractController
         ]);
     }
 
-    #[Route('api/themes/{id}/questions/{nb}', name: 'app_theme_question', methods: ['GET'])]
+    #[Route('api/theme/{id}/questions/{nb}', name: 'app_theme_question', methods: ['GET'])]
     public function getThemeQuestion($id, $nb): Response
     {
 

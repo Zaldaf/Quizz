@@ -24,6 +24,7 @@ class Reponse
     private Collection $Question;
 
     #[ORM\Column]
+    #[Groups(['getQuestion'])]
     private ?bool $isCorrect = null;
 
     public function __construct()

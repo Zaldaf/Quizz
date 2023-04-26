@@ -5,18 +5,44 @@ namespace App\DataFixtures;
 use App\Entity\Theme;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Faker\Factory;
+use Symfony\Component\String\Slugger\SluggerInterface;
+
 
 class ThemeFixtures extends Fixture
 {
-    public function load(ObjectManager $manager): void
+
+    private SluggerInterface $slugger;
+
+    /**
+     * @param SluggerInterface $slugger
+     */
+    public function __construct(SluggerInterface $slugger)
     {
-        $faker = Factory::create("fr_FR");
-        for ($i = 0; $i <= 6; $i++) {
-            $theme = new Theme();
-            $theme->setLibel($faker->realTextBetween("6","15"));
-            $this->addReference("theme".$i,$theme);
-            $manager->persist($theme);
+        $this->slugger = $slugger;
+    }
+
+
+    public function load(ObjectManager $manager): void
+
+
+    {
+
+        $themes = [
+            ['libel' => 'Geographie'],
+            ['libel' => 'Animaux']
+        ];
+
+
+
+
+        $i = 0 ;
+        foreach ($themes as $theme){
+            $fixture = new Theme();
+            $fixture->setLibel($theme['libel']);
+            $fixture->setSlug($this->slugger->slug($fixture->getLibel()));
+            $this->addReference("theme".$i,$fixture);
+            $manager->persist($fixture);
+            $i++;
         }
 
         $manager->flush();

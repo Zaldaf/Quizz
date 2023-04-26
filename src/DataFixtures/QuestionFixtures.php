@@ -12,9 +12,11 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $questions = [
-            ['intituler' => 'quelle est la capitale de la Roumanie ?','theme' => $this->getReference("theme".(0))],
+            ['intituler' => 'Quelle est la capitale de la Roumanie ?','theme' => $this->getReference("theme".(0))],
             ['intituler' => 'Quelle est la plus grande ville de France ?','theme' => $this->getReference("theme".(0))],
-            ['intituler' => "Quelle pays ne fais pas partie de l'union européenne ?",'theme' => $this->getReference("theme".(0))]
+            ['intituler' => "Quelle pays ne fais pas partie de l'union européenne ?",'theme' => $this->getReference("theme".(0))],
+            ['intituler' => "Quelle animal a 4 pattes ?",'theme' => $this->getReference("theme".(1))],
+            ['intituler' => "Quelle animal est le plus lourd ?",'theme' => $this->getReference("theme".(1))]
 
         ];
 

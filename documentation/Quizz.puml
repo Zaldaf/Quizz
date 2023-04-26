@@ -12,5 +12,5 @@ class Reponse {
   - isCorrect : bool
 }
 Question  "1..*" -- "1..1" Theme
-Question "1..*" -- "4" Reponse
+Question "1..1" -- "4" Reponse
 @enduml
